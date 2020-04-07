@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="Duozada" title="#delicinhas" src=".github/dalegg.png" width="200px" />
+    <img alt="Duozada" title="#delicinhas" src=".github/duozada.png" width="200px" />
 </h1>
 
 <h4 align="center">
