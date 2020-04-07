@@ -1,8 +1,15 @@
 import { Request, Response } from 'express'
 
-const myMiddleware = (req: Request, res: Response, next: any) => {
-  console.log('Middleware working')
-  next()
+function logRequests(request: Request, response: Response, next: any) {
+  const { method, url } = request;
+
+  const logLabel = `[${method.toUpperCase()}] ${url}`;
+
+  console.time(logLabel);
+
+  next();
+
+  console.timeEnd(logLabel);
 }
 
-export default myMiddleware
+export default logRequests
