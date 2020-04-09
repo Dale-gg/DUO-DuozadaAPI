@@ -6,19 +6,19 @@
   👬 Duozada 🎮
 </h4>
 <p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Adryell/Duozada">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/Adryell/Duozada?style=for-the-badge&logo=appveyor">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Adryell/Duozada">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/Adryell/Duozada?style=for-the-badge&logo=appveyor">
   
   <a href="https://github.com/Adryell/Duozada/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Adryell/Duozada">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Adryell/Duozada?style=for-the-badge&logo=appveyor">
   </a>
 
   <a href="https://github.com/Adryell/Duozada/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/Adryell/Duozada">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/Adryell/Duozada?style=for-the-badge&logo=appveyor">
   </a>
 
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?style=for-the-badge&logo=appveyor">
 </p>
 
 <p align="center">
