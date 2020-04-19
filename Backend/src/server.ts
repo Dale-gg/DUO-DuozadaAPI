@@ -6,7 +6,7 @@ import * as bodyParser from 'body-parser'
 import morgan from 'morgan'
 import cors from 'cors'
 
-import myMiddleware from './App/Middlewares/log.middleware'
+import logRequests from './App/Middlewares/log.middleware'
 import UserController from './App/Controllers/user.controller'
 
 configDotenv({
@@ -20,7 +20,7 @@ const app = new App({
     morgan('dev'),
     bodyParser.urlencoded({ extended: false }),
     bodyParser.json(),
-    myMiddleware
+    logRequests
   ],
   controllers: [
     new UserController()
