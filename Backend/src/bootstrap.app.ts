@@ -1,7 +1,6 @@
 import express, { Application } from 'express'
- 
+
 // const knex = require('knex')
-const User = require('./App/Models/user.model')
 
 class App {
   public app: Application
@@ -30,7 +29,7 @@ class App {
       this.app.use('/', controller.router)
     })
   }
-  
+
   /* private setPgConnection (): void {
     const host = process.env.DB_HOST
     const port = process.env.DB_PORT

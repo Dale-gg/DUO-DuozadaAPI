@@ -2,7 +2,6 @@
 import { Request, Response } from 'express'
 // import passEncoded from '../Utils/passEncoded'
 // import User, { IUser, IUserObject } from '../Models/user.model'
-const User = require('../Models/user.model')
 // import { Secret } from "../Utils/jwt";
 
 const connection = require('../database/connection')
@@ -35,44 +34,44 @@ export default class UserService {
     return res.json(users)
   }
 
-  public async show (req: Request, res: Response) {
-    const user = await User.findById(req.params.id)
+  // public async show (req: Request, res: Response) {
+  //   const user = await User.findById(req.params.id)
 
-    return res.json({ msg: 'Show', user })
-  }
+  //   return res.json({ msg: 'Show', user })
+  // }
 
   /* public async login (req: Request, res: Response) {
     const iUser = req.body as IUser
     let user = await User.findOne({ email: iUser.email, password: iUser.password })
 
     if (!user) {
-      return res.status(403).json({ 
+      return res.status(403).json({
         status: 403,
-        type: 'no-match', 
+        type: 'no-match',
         msg: 'Email e senha não batem com nossa base de dados'
       })
     }
 
     const token = jwt.sign({user}, Secret)
 
-    return res.status(200).json({ 
+    return res.status(200).json({
       status: 200,
-      type: 'success-register', 
-      msg: 'Bem vindo a BraPay :)', 
-      auth: true, 
-      token: token 
+      type: 'success-register',
+      msg: 'Bem vindo a BraPay :)',
+      auth: true,
+      token: token
     })
-  } */ 
+  } */
 
   /* public async store (req: Request, res: Response) {
     const iUser = req.body as IUser
     let findUser = await User.findOne({email: iUser.email});
 
     if (findUser) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         status: 400,
-        type: 'already-registered', 
-        msg: `O email ${iUser.email} já foi cadastrado!` 
+        type: 'already-registered',
+        msg: `O email ${iUser.email} já foi cadastrado!`
       })
     }
 
@@ -81,12 +80,12 @@ export default class UserService {
 
     const token = jwt.sign({user}, Secret)
 
-    return res.status(200).json({ 
+    return res.status(200).json({
       status: 200,
-      type: 'success-register', 
-      msg: 'Bem vindo a Duoazada :)', 
-      auth: true, 
-      token: token 
+      type: 'success-register',
+      msg: 'Bem vindo a Duoazada :)',
+      auth: true,
+      token: token
     })
   } */
 

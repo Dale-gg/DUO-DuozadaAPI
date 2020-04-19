@@ -3,7 +3,7 @@ import UserService from '../Services/user.service'
 
 export default class UserController {
   public router = express.Router()
-  public path = '/'
+  public path = '/api/v1/'
   private userService: UserService
 
   constructor () {
@@ -15,7 +15,6 @@ export default class UserController {
     this.router.get(`${this.path}users`, this.userService.index)
     this.router.post(`${this.path}users`, this.userService.store)
     // this.router.post(`${this.path}login`, this.userService.login)
-    this.router.get(`${this.path}users/:id`, this.userService.show)
     // this.router.delete(`${this.path}users/:id`, this.userService.destroy)
   }
 }
