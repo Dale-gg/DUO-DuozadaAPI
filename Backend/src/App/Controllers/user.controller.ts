@@ -14,8 +14,8 @@ export default class UserController {
   public setupRoutes () {
     this.router.get(`${this.path}users`, this.userService.index)
     this.router.post(`${this.path}users`, this.userService.store)
-    this.router.post(`${this.path}login`, this.userService.login)
+    // this.router.post(`${this.path}login`, this.userService.login)
     this.router.get(`${this.path}users/:id`, this.userService.show)
-    this.router.delete(`${this.path}users/:id`, this.userService.destroy)
+    // this.router.delete(`${this.path}users/:id`, this.userService.destroy)
   }
 }

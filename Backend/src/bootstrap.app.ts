@@ -1,5 +1,7 @@
 import express, { Application } from 'express'
-import mongoose from 'mongoose'
+ 
+// const knex = require('knex')
+const User = require('./App/Models/user.model')
 
 class App {
   public app: Application
@@ -8,7 +10,7 @@ class App {
   constructor (appConfig: { port: any, middlewares: any, controllers: any }) {
     this.app = express()
     this.port = appConfig.port
-    this.setMongooseConnection()
+    // this.setPgConnection()
     this.setMiddlewares(appConfig.middlewares)
     this.setControllers(appConfig.controllers)
   }
@@ -28,19 +30,25 @@ class App {
       this.app.use('/', controller.router)
     })
   }
+  
+  /* private setPgConnection (): void {
+    const host = process.env.DB_HOST
+    const port = process.env.DB_PORT
+    const username = process.env.DB_USER
+    const password = process.env.DB_PASSWORD
+    const database = process.env.DB_DATABASE
 
-  private setMongooseConnection (): void {
-    const user = process.env.MONGODB_USER
-    const password = process.env.MONGODB_PASSWORD
-    const cluster = process.env.MONGODB_CLUSTER
-    const database = process.env.MONGODB_DATABASE
-
-    mongoose.connect(`mongodb+srv://${user}:${password}@${cluster}/${database}`, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false
+    new knex ({
+      client: 'pg',
+      connection: {
+        host: host,
+        port: port,
+        user: username,
+        password: password,
+        database: database
+      }
     })
-  }
+  }*/
 }
 
 export default App
