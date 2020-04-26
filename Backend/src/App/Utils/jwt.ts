@@ -1,1 +1,0 @@
-export const Secret: any = process.env["JWT_SECRET"];
