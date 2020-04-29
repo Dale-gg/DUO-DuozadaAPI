@@ -5,7 +5,7 @@ import usersRouter from './users.routes'
 
 const routes = Router()
 
-routes.use('/sessions', sessionsRouter)
-routes.use('/users', usersRouter)
+routes.use('/api/v1/sessions', sessionsRouter)
+routes.use('/api/v1/users', usersRouter)
 
 export default routes
