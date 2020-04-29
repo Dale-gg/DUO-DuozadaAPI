@@ -7,10 +7,14 @@ interface IRequest {
   name: string
   email: string
   password: string
+  avatar: string
+  champions: string
+  routes: string
+  media: string
 }
 
 class CreateUserService {
-  public async execute({ name, email, password }: IRequest): Promise<User> {
+  public async execute({ name, email, password, avatar, champions, routes, media }: IRequest): Promise<User> {
     const usersRepository = getRepository(User)
 
     const checkUsersExists = await usersRepository.findOne({
@@ -25,6 +29,10 @@ class CreateUserService {
       name,
       email,
       password,
+      avatar,
+      champions,
+      routes,
+      media
     })
 
     await usersRepository.save(user)

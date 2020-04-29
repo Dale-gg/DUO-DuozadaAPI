@@ -2,29 +2,16 @@ import { Router } from 'express'
 
 import multer from 'multer'
 import uploadConfig from '../Config/upload'
-import CreateUserService from '../Services/CreateUserService'
 import ensureAuthenticated from '../Middleware/ensureAuthenticated'
-
 import UpdateUserAvatarService from '../Services/UpdateUserAvatarService'
+import UsersController from '../Controllers/UsersController'
 
 const usersRouter = Router()
 const upload = multer(uploadConfig)
 
-usersRouter.post('/', async (request, response) => {
-  const { name, email, password } = request.body
+const userController = new UsersController()
 
-  const createUser = new CreateUserService()
-
-  const user = await createUser.execute({
-    name,
-    email,
-    password,
-  })
-
-  delete user.password
-
-  return response.json(user)
-})
+usersRouter.post('/users', userController.store)
 
 usersRouter.patch(
   '/avatar',
