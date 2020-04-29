@@ -26,6 +26,24 @@ class User {
   @Column()
   avatar: string
 
+  @Column()
+  champions: string
+
+  @Column()
+  routes: string
+
+  @Column()
+  media: string
+
+  @Column()
+  like: string
+
+  @Column()
+  dislike: string
+
+  @Column()
+  status: boolean
+
   @CreateDateColumn()
   created_at: Date
 
