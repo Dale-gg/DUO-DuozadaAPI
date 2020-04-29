@@ -15,7 +15,7 @@ export default class CreateUsers1587328092361 implements MigrationInterface {
           },
           {
             name: 'name',
-            type: 'varchar',
+            type: 'varchar',         
           },
           {
             name: 'email',
@@ -23,13 +23,38 @@ export default class CreateUsers1587328092361 implements MigrationInterface {
             isUnique: true,
           },
           {
+            name: 'password',
+            type: 'varchar',
+          },
+          {
             name: 'avatar',
             type: 'varchar',
             isNullable: true,
           },
           {
-            name: 'password',
+            name: 'champions',
             type: 'varchar',
+          },
+          {
+            name: 'routes',
+            type: 'varchar',
+          },
+          {
+            name: 'media',
+            type: 'varchar',
+          },
+          {
+            name: 'like',
+            type: 'varchar',
+          },
+          {
+            name: 'dislike',
+            type: 'varchar',
+          },
+          {
+            name: 'status',
+            type: 'boolean',
+            default: false,
           },
           {
             name: 'created_at',
