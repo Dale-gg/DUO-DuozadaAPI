@@ -11,7 +11,7 @@ const upload = multer(uploadConfig)
 
 const userController = new UsersController()
 
-usersRouter.post('/users', userController.store)
+usersRouter.post('/', userController.store)
 
 usersRouter.patch(
   '/avatar',
