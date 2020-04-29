@@ -1,10 +1,10 @@
 {
   "type": "postgres",
   "host": "localhost",
-  "port": "5433",
+  "port": "5432",
   "username": "postgres",
-  "password": "docker",
-  "database": "gostack_gobarber",
+  "password": "WsrtELbF351785",
+  "database": "duozada",
   "entities": ["./src/Models/*.ts"],
   "migrations": ["./src/Database/migrations/*.ts"],
   "cli": {
