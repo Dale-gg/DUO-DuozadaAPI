@@ -1,9 +1,11 @@
-import * as express from 'express'
+import { Response, Request } from 'express'
 import CreateUserService from '../Services/CreateUserService'
 
 class UsersController {
-    public async store(request: express.Request, response: express.Response){    
+    public async store(request: Request, response: Response){    
         const createUser = new CreateUserService()
+        const { name } = request.body
+        console.log(request)
     
         const user = await createUser.execute(request.body)
     

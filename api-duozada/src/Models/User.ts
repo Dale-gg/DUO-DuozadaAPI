@@ -52,6 +52,7 @@ class User {
 
   @BeforeInsert()
   async modifyPassword(): Promise<void> {
+    console.log(this.password)
     const hashedPassword = await hash(this.password, 8)
     this.password = hashedPassword
   }
