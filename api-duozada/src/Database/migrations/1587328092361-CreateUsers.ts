@@ -29,7 +29,6 @@ export default class CreateUsers1587328092361 implements MigrationInterface {
           {
             name: 'avatar',
             type: 'varchar',
-            isNullable: true,
           },
           {
             name: 'champions',
@@ -42,6 +41,7 @@ export default class CreateUsers1587328092361 implements MigrationInterface {
           {
             name: 'media',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'like',
