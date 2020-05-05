@@ -1,5 +1,8 @@
 import { getRepository } from 'typeorm'
+
 import User from '../Models/User'
+import Champion from '../Models/Champion'
+import Lane from '../Models/Lane'
 
 import AppError from '../Errors/AppError'
 
@@ -8,13 +11,21 @@ interface IRequest {
   email: string
   password: string
   avatar: string
-  champions: string
-  routes: string
+  champions: Champion[]
+  lanes: Lane[]
   media: string
 }
 
 class CreateUserService {
-  public async execute({ name, email, password, avatar, champions, routes, media }: IRequest): Promise<User> {
+  public async execute({
+    name,
+    email,
+    password,
+    avatar,
+    champions,
+    lanes,
+    media,
+  }: IRequest): Promise<User> {
     const usersRepository = getRepository(User)
 
     const checkUsersExists = await usersRepository.findOne({
@@ -31,8 +42,8 @@ class CreateUserService {
       password,
       avatar,
       champions,
-      routes,
-      media
+      lanes,
+      media,
     })
 
     await usersRepository.save(user)
