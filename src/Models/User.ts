@@ -8,6 +8,8 @@ import {
 } from 'typeorm'
 
 import { hash } from 'bcryptjs'
+import Champion from './Champion'
+import Lane from './Lane'
 
 @Entity('users')
 class User {
@@ -27,10 +29,10 @@ class User {
   avatar: string
 
   @Column()
-  champions: string
+  champions: Champion[]
 
   @Column()
-  routes: string
+  lanes: Lane[]
 
   @Column()
   media: string
