@@ -1,11 +1,9 @@
 import { getRepository } from 'typeorm'
 import User from '../Models/User'
-
-// import AppError from '../Errors/AppError'
+import AppError from '../Errors/AppError'
 
 class ListUsersService {
-  public async allUsers(): Promise<any> {
-    
+  public async allUsers(): Promise<User[]> {
     const usersRepository = getRepository(User)
     const user = await usersRepository.find()
     await usersRepository.save(user)
@@ -13,13 +11,21 @@ class ListUsersService {
     return user
   }
 
-  public async userById({ id }: any): Promise<any> {
-    const usersRepository = getRepository(User)
-    const user = await usersRepository.findByIds(id)
-    await usersRepository.save(user)
+  public async userById(id: string): Promise<User | AppError> {
+    try {
+      const usersRepository = getRepository(User)
+      const user = await usersRepository.findOne(id)
 
-    console.log(user)
-    return user
+      if (user) {
+        await usersRepository.save(user)
+
+        return user
+      }
+
+      throw new AppError('User não encontrado', 400)
+    } catch (error) {
+      throw new AppError(error.message, error.status)
+    }
   }
 }
 
