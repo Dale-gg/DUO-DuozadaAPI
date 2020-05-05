@@ -13,22 +13,21 @@ class UsersController {
     return response.json(user)
   }
 
-  public async index(request: Request, response: Response): Promise<Response>{
+  public async index(request: Request, response: Response): Promise<Response> {
     const listUser = new ListUsersService()
-    
+
     const user = await listUser.allUsers()
 
     return response.json(user)
   }
 
-  public async show(request: Request, response: Response): Promise<Response>{
+  public async show(request: Request, response: Response): Promise<Response> {
     const listUser = new ListUsersService()
-  
-    const user = await listUser.userById(request.headers)
-    
+
+    const user = await listUser.userById(request.params.id)
+
     return response.json(user)
   }
-  
 }
 
 export default UsersController
