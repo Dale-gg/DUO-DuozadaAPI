@@ -15,7 +15,7 @@ export default class CreateUsers1587328092361 implements MigrationInterface {
           },
           {
             name: 'name',
-            type: 'varchar',         
+            type: 'varchar',
           },
           {
             name: 'email',
@@ -35,7 +35,7 @@ export default class CreateUsers1587328092361 implements MigrationInterface {
             type: 'varchar',
           },
           {
-            name: 'routes',
+            name: 'lanes',
             type: 'varchar',
           },
           {

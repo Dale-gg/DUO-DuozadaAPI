@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Entity,
   Column,
@@ -29,10 +30,10 @@ class User {
   avatar: string
 
   @Column()
-  champions: Champion[]
+  champions: string
 
   @Column()
-  lanes: Lane[]
+  lanes: string
 
   @Column()
   media: string
