@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Router } from 'express'
 
 import multer from 'multer'
@@ -14,6 +15,8 @@ const userController = new UsersController()
 usersRouter.post('/', userController.store)
 usersRouter.get('/', userController.index)
 usersRouter.get('/:id', userController.show)
+usersRouter.put('/:id', userController.update)
+usersRouter.delete('/:id', userController.destroy)
 
 usersRouter.patch(
   '/avatar',
