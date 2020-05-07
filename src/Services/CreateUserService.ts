@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { getRepository } from 'typeorm'
 
 import User from '../Models/User'
