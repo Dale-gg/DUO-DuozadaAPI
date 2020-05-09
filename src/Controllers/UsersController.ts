@@ -19,9 +19,9 @@ class UsersController {
   public async index(request: Request, response: Response): Promise<Response> {
     const listUser = new ListUsersService()
 
-    const user = await listUser.allUsers()
+    const users = await listUser.allUsers()
 
-    return response.json(user)
+    return response.json({ users })
   }
 
   public async show(request: Request, response: Response): Promise<Response> {

@@ -12,8 +12,8 @@ interface IRequest {
   email: string
   password: string
   avatar: string
-  champions: Champion[]
-  lanes: Lane[]
+  champions: string
+  lanes: string
   media: string
 }
 

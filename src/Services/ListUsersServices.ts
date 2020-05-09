@@ -7,7 +7,6 @@ class ListUsersService {
   public async allUsers(): Promise<User[]> {
     const usersRepository = getRepository(User)
     const user = await usersRepository.find()
-    await usersRepository.save(user)
 
     return user
   }

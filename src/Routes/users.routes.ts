@@ -18,6 +18,7 @@ usersRouter.get('/:id', userController.show)
 usersRouter.put('/:id', userController.update)
 usersRouter.delete('/:id', userController.destroy)
 
+/*
 usersRouter.patch(
   '/avatar',
   ensureAuthenticated,
@@ -35,5 +36,6 @@ usersRouter.patch(
     return response.json(user)
   },
 )
+*/
 
 export default usersRouter

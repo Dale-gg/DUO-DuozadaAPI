@@ -9,8 +9,8 @@ import {
 } from 'typeorm'
 
 import { hash } from 'bcryptjs'
-import Champion from './Champion'
-import Lane from './Lane'
+// import Champion from './Champion'
+// import Lane from './Lane'
 
 @Entity('users')
 class User {
@@ -53,12 +53,14 @@ class User {
   @UpdateDateColumn()
   updated_at: Date
 
+  /*
   @BeforeInsert()
   async modifyPassword(): Promise<void> {
     console.log(this.password)
     const hashedPassword = await hash(this.password, 8)
     this.password = hashedPassword
   }
+  */
 }
 
 export default User
