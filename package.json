@@ -8,7 +8,9 @@
     "dev:server": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "test": "cross-env NODE_ENV=test node japaFile.js",
-    "test:user": "yarn ts-node src/__tests__/functional/User.spec.ts"
+    "test:user": "yarn ts-node src/__tests__/functional/User.spec.ts",
+    "lint": "eslint ./src --ext=.ts",
+    "lint:fix": "eslint ./src --fix --ext=.ts"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -17,20 +19,21 @@
     "@types/jsonwebtoken": "^8.3.9",
     "@types/multer": "^1.4.3",
     "@types/supertest": "^2.0.9",
-    "@typescript-eslint/eslint-plugin": "^2.28.0",
-    "@typescript-eslint/parser": "^2.28.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "eslint": "^7.0.0",
+    "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-import-resolver-typescript": "^2.0.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "prettier": "^2.0.4"
+    "eslint-plugin-standard": "^4.0.1",
+    "prettier": "^2.0.5"
   },
   "dependencies": {
+    "@jlenon7/dedsec": "^1.1.6",
     "bcryptjs": "^2.4.3",
     "date-fns": "^2.12.0",
     "express": "^4.17.1",

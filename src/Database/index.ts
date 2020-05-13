@@ -10,6 +10,6 @@ export default async (name = 'default'): Promise<Connection> => {
         process.env.NODE_ENV === 'test'
           ? 'duozadadb_test'
           : defaultOptions.database,
-    })
+    }),
   )
 }

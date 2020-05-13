@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { Router } from 'express'
 
-import multer from 'multer'
-import uploadConfig from '../Config/upload'
-import ensureAuthenticated from '../Middleware/ensureAuthenticated'
-import UpdateUserAvatarService from '../Services/UpdateUserAvatarService'
-import UsersController from '../Controllers/UsersController'
+// import multer from 'multer'
+// import uploadConfig from '../App/Config/upload'
+// import ensureAuthenticated from '../App/Middleware/ensureAuthenticated'
+// import UpdateUserAvatarService from '../App/Services/UpdateUserAvatarService'
+import UsersController from '../App/Controllers/UsersController'
 
 const usersRouter = Router()
-const upload = multer(uploadConfig)
+// const upload = multer(uploadConfig)
 
 const userController = new UsersController()
 
