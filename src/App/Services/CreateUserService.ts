@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { getRepository } from 'typeorm'
 
 import User from '../Models/User'
@@ -11,8 +12,8 @@ interface IRequest {
   email: string
   password: string
   avatar: string
-  champions: Champion[]
-  lanes: Lane[]
+  champions: string
+  lanes: string
   media: string
 }
 

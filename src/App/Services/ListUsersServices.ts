@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { getRepository } from 'typeorm'
 import User from '../Models/User'
 import AppError from '../Errors/AppError'
@@ -6,7 +7,6 @@ class ListUsersService {
   public async allUsers(): Promise<User[]> {
     const usersRepository = getRepository(User)
     const user = await usersRepository.find()
-    await usersRepository.save(user)
 
     return user
   }
