@@ -2,9 +2,6 @@
 import { getRepository } from 'typeorm'
 
 import User from '../Models/User'
-import Champion from '../Models/Champion'
-import Lane from '../Models/Lane'
-
 import AppError from '../Errors/AppError'
 
 interface IRequest {
