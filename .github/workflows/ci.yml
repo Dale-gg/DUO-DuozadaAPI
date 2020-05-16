@@ -15,7 +15,7 @@ jobs:
           POSTGRES_PASSWORD: docker
           POSTGRES_ROOT_PASSWORD: root1234
         ports:
-          - '5432'
+          - '5433:5432'
 
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 10
 
@@ -26,7 +26,7 @@ jobs:
           node-version: '10.14.2'
           registry-url: 'https://npm.pkg.github.com'
       - name: Configure ENV
-        run: cp .env.example .env.testing
+        run: cp .env.example .env
       - name: Installation
         run: yarn
       - name: Lint project
