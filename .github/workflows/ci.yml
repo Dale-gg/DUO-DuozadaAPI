@@ -26,7 +26,7 @@ jobs:
           node-version: '10.14.2'
           registry-url: 'https://npm.pkg.github.com'
       - name: Configure ENV
-        run: cp .env.example .env
+        run: cp .env.example .env.testing
       - name: Installation
         run: yarn
       - name: Lint project
