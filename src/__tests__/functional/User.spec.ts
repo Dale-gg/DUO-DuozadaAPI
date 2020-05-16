@@ -6,11 +6,11 @@ import request from 'supertest'
 
 import Factory from '../../Database/factory'
 
-import app from '../../app'
+import app from '../../server'
 
 let connection: Connection
 
-test.group('User Tests', group => {
+test.group('1 - User Tests', group => {
   group.before(async () => {
     connection = await createConnection('test-connection')
     await connection.runMigrations()
@@ -38,7 +38,7 @@ test.group('User Tests', group => {
 
   test('A - Create User', async assert => {
     const response = await request(app)
-      .post('/duo/v1/users')
+      .post(`${process.env.APP_PREFIX}/users`)
       .send({
         name,
         email,
@@ -57,7 +57,9 @@ test.group('User Tests', group => {
     const factory = new Factory()
     await factory.manyUsers(5)
 
-    const response = await request(app).get(`/duo/v1/users`).expect(200)
+    const response = await request(app)
+      .get(`${process.env.APP_PREFIX}/users`)
+      .expect(200)
 
     assert.exists(response.body.data[0])
   })

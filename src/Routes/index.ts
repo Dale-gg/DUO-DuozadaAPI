@@ -1,11 +1,20 @@
 import { Router } from 'express'
 
-import sessionsRouter from './sessions.routes'
-import usersRouter from './users.routes'
+import sessions from './sessions.routes'
+import users from './users.routes'
+import welcome from './welcome.routes'
 
-const routes = Router()
+export default class Routes {
+  public router = Router()
+  private path = process.env.APP_PREFIX
 
-routes.use('/duo/v1/sessions', sessionsRouter)
-routes.use('/duo/v1/users', usersRouter)
+  constructor() {
+    this.setupRoutes()
+  }
 
-export default routes
+  public setupRoutes(): any {
+    this.router.use(`${this.path}/users`, users)
+    this.router.use(`${this.path}/sessions`, sessions)
+    this.router.use('/', welcome)
+  }
+}
