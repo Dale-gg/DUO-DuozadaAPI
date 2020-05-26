@@ -8,7 +8,8 @@
     "dev:server": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "test": "cross-env NODE_ENV=testing node japaFile.js",
-    "test:user": "cross-env NODE_ENV=testing yarn ts-node src/__tests__/functional/User.spec.ts",
+    "test:functional": "cross-env NODE_ENV=testing yarn ts-node src/__tests__/Functional.spec.ts",
+    "migrate": "docker-compose run migrations yarn migrate",
     "lint": "eslint ./src --ext=.ts",
     "lint:fix": "eslint ./src --fix --ext=.ts"
   },
