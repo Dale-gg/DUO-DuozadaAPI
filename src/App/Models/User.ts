@@ -6,14 +6,17 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BeforeInsert,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm'
 
 import { hash } from 'bcryptjs'
-// import Champion from './Champion'
-// import Lane from './Lane'
+import { IUserObject } from '../Interfaces/IUser'
+import Champion from './Champion'
+import Lane from './Lane'
 
-@Entity('users')
-class User {
+@Entity('duo_users')
+class User implements IUserObject {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -29,11 +32,13 @@ class User {
   @Column()
   avatar: string
 
-  @Column()
-  champions: string
+  @ManyToMany(() => Champion)
+  @JoinTable()
+  champions: Champion[]
 
-  @Column()
-  lanes: string
+  @ManyToMany(() => Lane)
+  @JoinTable()
+  lanes: Lane[]
 
   @Column()
   media: string
@@ -53,13 +58,11 @@ class User {
   @UpdateDateColumn()
   updated_at: Date
 
-  
   @BeforeInsert()
-  async modifyPassword(): Promise<void> {
+  private async modifyPassword(): Promise<void> {
     const hashedPassword = await hash(this.password, 8)
     this.password = hashedPassword
   }
-  
 }
 
 export default User
