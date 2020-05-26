@@ -31,7 +31,7 @@ services:
       - db
 
   migrations:
-    image: jlenon7/duogg-migrations:1.0.7
+    image: jlenon7/duogg-migrations:1.1.0
     container_name: duo_migrations
     environment:
       DB_CONNECTION: postgres
