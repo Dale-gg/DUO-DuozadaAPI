@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "@jlenon7/dedsec": "^1.1.6",
+    "@jlenon7/zedjs": "^1.0.9",
     "bcryptjs": "^2.4.3",
     "cross-env": "^7.0.2",
     "date-fns": "^2.12.0",
