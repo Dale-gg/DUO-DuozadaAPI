@@ -8,7 +8,7 @@ export default async (name = 'default'): Promise<Connection> => {
       name,
       database:
         process.env.NODE_ENV === 'testing'
-          ? 'postgres'
+          ? process.env.DB_DATABASE
           : defaultOptions.database,
     }),
   )
