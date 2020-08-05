@@ -1,3 +1,4 @@
-node_modules
+/node_modules
 .env
-.env.testing
+ormconfig.json
+coverage

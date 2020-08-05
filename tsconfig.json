@@ -3,26 +3,19 @@
     "target": "es5",
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "./src",
+    "allowJs": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "baseUrl": "./",
-    "moduleResolution": "node",
-    "pretty": true,
-    "sourceMap": true,
+    "baseUrl": "./src",
     "paths": {
-      "@Config/*": ["config/*"],
-      "@Start/*": ["start/*"],
-      "@Database/*": ["database/*"],
-      "@Utils/*": ["app/Utils/*"],
-      "@Domain/*": ["app/Domains/*"],
-      "@Exceptions/*": ["app/Exceptions/*"],
-      "@Providers/*": ["providers/index"]
+      "@Modules/*": ["Modules/*"],
+      "@Config/*": ["Config/*"],
+      "@Shared/*": ["Shared/*"]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
