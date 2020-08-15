@@ -1,11 +1,11 @@
 {
   "name": "@dalegg/duozada",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpileOnly --ignore-watch node_modules src/Shared/Infra/Http/server.ts",
+    "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/Shared/Infra/Http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest"
   },
@@ -19,6 +19,7 @@
     "@types/mongodb": "^3.5.25",
     "@types/multer": "^1.4.3",
     "@types/nodemailer": "^6.4.0",
+    "@types/redis": "^2.8.25",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
     "eslint": "^6.8.0",
@@ -54,6 +55,7 @@
     "nodemailer": "^6.4.10",
     "pg": "^8.0.2",
     "rate-limiter-flexible": "^2.1.9",
+    "redis": "^3.0.2",
     "reflect-metadata": "^0.1.13",
     "ts-node-dev": "^1.0.0-pre.44",
     "tsyringe": "^4.3.0",
