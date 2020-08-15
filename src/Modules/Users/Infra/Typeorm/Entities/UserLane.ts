@@ -7,23 +7,18 @@ import {
   Generated,
 } from 'typeorm'
 
-@Entity('duo_user_tokens')
-class UserToken {
+@Entity('duo_users_lanes')
+class UserLane {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
   @Column('uuid')
   @Generated('uuid')
-  token: string
-
-  @Column()
-  type: string
-
-  @Column()
-  is_revoked: boolean
-
-  @Column()
   user_id: string
+
+  @Column('uuid')
+  @Generated('uuid')
+  lane_id: string
 
   @CreateDateColumn()
   created_at: Date
@@ -32,4 +27,4 @@ class UserToken {
   updated_at: Date
 }
 
-export default UserToken
+export default UserLane

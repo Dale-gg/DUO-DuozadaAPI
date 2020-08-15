@@ -4,12 +4,20 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToMany,
+  JoinTable,
+  OneToMany,
 } from 'typeorm'
 
+import Lane from './Lane'
+import Champion from './Champion'
 import { Exclude, Expose } from 'class-transformer'
 import uploadConfig from '@Config/upload'
 
-@Entity('users')
+import Like from '@Modules/LikeDislike/Infra/Typeorm/Entities/Like'
+import Dislike from '@Modules/LikeDislike/Infra/Typeorm/Entities/Dislike'
+
+@Entity('duo_users')
 class User {
   @PrimaryGeneratedColumn('uuid')
   id: string
@@ -26,6 +34,23 @@ class User {
 
   @Column()
   avatar: string
+
+  @Column()
+  status: string
+
+  @OneToMany(() => Like, like => like.user)
+  likes: Like[]
+
+  @OneToMany(() => Dislike, dislike => dislike.user)
+  dislikes: Dislike[]
+
+  @ManyToMany(() => Lane)
+  @JoinTable()
+  lanes: Lane[]
+
+  @ManyToMany(() => Champion)
+  @JoinTable()
+  champions: Champion[]
 
   @CreateDateColumn()
   created_at: Date
