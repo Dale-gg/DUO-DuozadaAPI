@@ -21,7 +21,6 @@ import { setupWebSocket } from '../Ws/websocket'
 const app = express()
 
 const server = http.createServer(app)
-setupWebSocket(server)
 
 app.use(rateLimiter)
 app.use(cors())
@@ -46,6 +45,8 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
     message: 'Internal server error',
   })
 })
+
+setupWebSocket(server)
 
 server.listen(process.env.PORT || 3333, () => {
   console.log(
