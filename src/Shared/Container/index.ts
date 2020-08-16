@@ -27,6 +27,12 @@ import LanesRepository from '@Modules/Users/Infra/Typeorm/Repositories/LanesRepo
 import IChampionsRepository from '@Modules/Users/Repositories/IChampionsRepository'
 import ChampionsRepository from '@Modules/Users/Infra/Typeorm/Repositories/ChampionsRepository'
 
+import IChatsRepository from '@Modules/Chat/Repositories/IChatsRepository'
+import ChatsRepository from '@Modules/Chat/Infra/Typeorm/Repositories/ChatsRepository'
+
+import IMessagesRepository from '@Modules/Chat/Repositories/IMessagesRepository'
+import MessagesRepository from '@Modules/Chat/Infra/Typeorm/Repositories/MessagesRepository'
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -65,4 +71,14 @@ container.registerSingleton<ILanesRepository>(
 container.registerSingleton<IChampionsRepository>(
   'ChampionsRepository',
   ChampionsRepository,
+)
+
+container.registerSingleton<IChatsRepository>(
+  'ChatsRepository',
+  ChatsRepository,
+)
+
+container.registerSingleton<IMessagesRepository>(
+  'MessagesRepository',
+  MessagesRepository,
 )
