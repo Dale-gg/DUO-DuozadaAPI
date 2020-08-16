@@ -3,13 +3,13 @@ import MessagesRepository from '@Modules/Chat/Infra/Typeorm/Repositories/Message
 
 let io
 
-export const setupWebSocket = async (server: any) => {
+export const setupWebSocket = (server: any) => {
   io = socketio(server)
 
   io.on('connection', async socket => {
     const messagesRepository = new MessagesRepository()
 
-    const { authenticatedUser, chat_id } = socket.handshake.query
+    const { user_id, chat_id } = socket.handshake.query
 
     const previousMessages = await messagesRepository.all(chat_id)
 
@@ -17,11 +17,12 @@ export const setupWebSocket = async (server: any) => {
 
     socket.on('sendMessage', async data => {
       const message = await messagesRepository.create({
-        user_id: authenticatedUser.id,
+        user_id,
         chat_id,
         body: data,
       })
-      socket.broadcast.emit('receivedMessage', message)
+
+      socket.emit('receivedMessage', message)
     })
   })
 
