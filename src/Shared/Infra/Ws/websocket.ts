@@ -1,7 +1,8 @@
 import socketio from 'socket.io'
+import MessagesRepository from '@Modules/Chat/Infra/Typeorm/Repositories/MessagesRepository'
+const messagesRepository = new MessagesRepository()
 
 let io
-const messages: any[] = []
 
 export const setupWebSocket = (server: any) => {
   console.log(
@@ -9,18 +10,20 @@ export const setupWebSocket = (server: any) => {
   )
   io = socketio(server)
 
-  // connection tem que acontecer de acordo com o chat
-  io.on('connection', socket => {
-    // const { user } = socket.handshake.query
+  io.on('connection', async socket => {
+    const { authenticatedUser, chat_id } = socket.handshake.query
 
-    // load das mensagens de acordo com o chat escolhido
-    socket.emit('previousMessages', messages)
+    const previousMessages = await messagesRepository.all(chat_id)
+    socket.emit('previousMessages', previousMessages)
 
-    socket.on('sendMessage', data => {
-      // salva no banco
-      messages.push(data)
-      // manda para todas as connections que estão no chat e mensagem criada
-      socket.broadcast.emit('receivedMessage', data)
+    socket.on('sendMessage', async data => {
+      const message = await messagesRepository.create({
+        user_id: authenticatedUser.id,
+        chat_id,
+        body: data,
+      })
+
+      socket.broadcast.emit('receivedMessage', message)
     })
   })
 }
