@@ -60,12 +60,10 @@ class CreateLikeService {
         like2_id: otherLike.id,
       })
 
-      if (duozada) {
-        await this.chatsRepository.create({
-          user1_id: user_id,
-          user2_id: target_user_id,
-        })
-      }
+      await this.chatsRepository.create({
+        user1_id: user_id,
+        user2_id: target_user_id,
+      })
 
       return duozada
     }
