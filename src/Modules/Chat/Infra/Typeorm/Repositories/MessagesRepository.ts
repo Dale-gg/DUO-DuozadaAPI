@@ -11,8 +11,10 @@ class MessagesRepository implements IMessagesRepository {
     this.ormRepository = getRepository(Message)
   }
 
-  public async all(): Promise<Message[]> {
-    const messages = await this.ormRepository.find()
+  public async all(chat_id: string): Promise<Message[]> {
+    const messages = await this.ormRepository.find({
+      where: { chat_id },
+    })
 
     return messages
   }
