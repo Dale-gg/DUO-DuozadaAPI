@@ -9,10 +9,11 @@ export const setupWebSocket = (server: any) => {
   )
   io = socketio(server)
 
+  // connection tem que acontecer de acordo com o chat
   io.on('connection', socket => {
     // const { user } = socket.handshake.query
 
-    // load do banco
+    // load das mensagens de acordo com o chat escolhido
     socket.emit('previousMessages', messages)
 
     socket.on('sendMessage', data => {
