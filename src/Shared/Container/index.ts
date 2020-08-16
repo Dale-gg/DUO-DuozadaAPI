@@ -9,9 +9,6 @@ import UsersRepository from '@Modules/Users/Infra/Typeorm/Repositories/UsersRepo
 import IUserTokensRepository from '@Modules/Users/Repositories/IUserTokensRepository'
 import UserTokensRepository from '@Modules/Users/Infra/Typeorm/Repositories/UserTokensRepository'
 
-import INotificationsRepository from '@Modules/Notifications/Repositories/INotificationsRepository'
-import NotificationsRepository from '@Modules/Notifications/Infra/Typeorm/Repositories/NotificationsRepository'
-
 import ILikesRepository from '@Modules/LikeDislike/Repositories/ILikesRepository'
 import LikesRepository from '@Modules/LikeDislike/Infra/Typeorm/Repositories/LikesRepository'
 
@@ -41,11 +38,6 @@ container.registerSingleton<IUsersRepository>(
 container.registerSingleton<IUserTokensRepository>(
   'UserTokensRepository',
   UserTokensRepository,
-)
-
-container.registerSingleton<INotificationsRepository>(
-  'NotificationsRepository',
-  NotificationsRepository,
 )
 
 container.registerSingleton<ILikesRepository>(
