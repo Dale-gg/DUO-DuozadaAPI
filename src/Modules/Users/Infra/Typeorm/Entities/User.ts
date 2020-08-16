@@ -14,6 +14,8 @@ import Champion from './Champion'
 import { Exclude, Expose } from 'class-transformer'
 import uploadConfig from '@Config/upload'
 
+import Chat from '@Modules/Chat/Infra/Typeorm/Entities/Chat'
+import Message from '@Modules/Chat/Infra/Typeorm/Entities/Message'
 import Like from '@Modules/LikeDislike/Infra/Typeorm/Entities/Like'
 import Dislike from '@Modules/LikeDislike/Infra/Typeorm/Entities/Dislike'
 
@@ -37,6 +39,12 @@ class User {
 
   @Column()
   status: string
+
+  @OneToMany(() => Chat, chat => chat.user1)
+  chats: Chat[]
+
+  @OneToMany(() => Message, message => message.user)
+  messages: Message[]
 
   @OneToMany(() => Like, like => like.user)
   likes: Like[]
