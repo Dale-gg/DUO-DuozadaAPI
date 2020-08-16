@@ -22,7 +22,7 @@ export const setupWebSocket = (server: any) => {
         body: data,
       })
 
-      socket.emit('receivedMessage', message)
+      socket.broadcast.emit('receivedMessage', message)
     })
   })
 
