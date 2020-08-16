@@ -17,5 +17,6 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": ["node_modules", "**/*.spec.ts", "coverage", "jest.config.js"]
 }

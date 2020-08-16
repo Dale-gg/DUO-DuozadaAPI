@@ -13,6 +13,7 @@ const usersController = new UsersController()
 const userAvatarController = new UserAvatarController()
 const upload = multer(uploadConfig.multer)
 
+usersRouter.get('/', ensureAuthenticated, usersController.index)
 usersRouter.post(
   '/',
   celebrate({
@@ -20,6 +21,8 @@ usersRouter.post(
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
+      lanes: Joi.array(),
+      champions: Joi.array(),
     },
   }),
   usersController.store,

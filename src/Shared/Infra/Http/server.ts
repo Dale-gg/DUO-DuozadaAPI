@@ -8,6 +8,8 @@ import routes from './Routes'
 import { errors } from 'celebrate'
 import uploadConfig from '@Config/upload'
 import rateLimiter from './Middlewares/rateLimiter'
+import http from 'http'
+import { setupWebSocket } from '../Ws/websocket'
 
 import AppError from '@Shared/Errors/AppError'
 
@@ -15,6 +17,9 @@ import '@Shared/Infra/Typeorm'
 import '@Shared/Container'
 
 const app = express()
+
+const server = http.createServer(app)
+setupWebSocket(server)
 
 app.use(rateLimiter)
 app.use(cors())
@@ -40,6 +45,8 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
   })
 })
 
-app.listen(3333, () => {
-  console.log(`🚀 Server is listening on port ${process.env.PORT || 3333} 🤯`)
+server.listen(3333, () => {
+  console.log(
+    `🚀 [HTPP] Server is listening on port ${process.env.PORT || 3333} 🤯`,
+  )
 })

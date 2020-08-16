@@ -7,7 +7,7 @@ import {
   Generated,
 } from 'typeorm'
 
-@Entity('user_tokens')
+@Entity('duo_user_tokens')
 class UserToken {
   @PrimaryGeneratedColumn('uuid')
   id: string
@@ -15,6 +15,12 @@ class UserToken {
   @Column('uuid')
   @Generated('uuid')
   token: string
+
+  @Column()
+  type: string
+
+  @Column()
+  is_revoked: boolean
 
   @Column()
   user_id: string
