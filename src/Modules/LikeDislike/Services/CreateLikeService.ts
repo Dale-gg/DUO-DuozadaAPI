@@ -2,6 +2,7 @@ import Like from '@Modules/LikeDislike/Infra/Typeorm/Entities/Like'
 import { injectable, inject } from 'tsyringe'
 
 // import AppError from '@Shared/Errors/AppError'
+import IChatsRepository from '@Modules/Chat/Repositories/IChatsRepository'
 import ILikesRepository from '@Modules/LikeDislike/Repositories/ILikesRepository'
 import IDuozadasRepository from '@Modules/LikeDislike/Repositories/IDuozadasRepository'
 import Duozada from '../Infra/Typeorm/Entities/Duozada'
@@ -19,6 +20,8 @@ class CreateLikeService {
     private likesRepository: ILikesRepository,
     @inject('DuozadasRepository')
     private duozadasRepository: IDuozadasRepository,
+    @inject('ChatsRepository')
+    private chatsRepository: IChatsRepository,
   ) {}
 
   private async verifyLikes(like: Like): Promise<Like | undefined> {
@@ -56,6 +59,13 @@ class CreateLikeService {
         like1_id: like.id,
         like2_id: otherLike.id,
       })
+
+      if (duozada) {
+        await this.chatsRepository.create({
+          user1_id: user_id,
+          user2_id: target_user_id,
+        })
+      }
 
       return duozada
     }
