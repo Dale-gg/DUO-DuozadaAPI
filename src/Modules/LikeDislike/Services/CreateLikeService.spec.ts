@@ -3,12 +3,14 @@ import FakeDuozadasRepository from '../Repositories/Fakes/FakeDuozadasRepository
 
 import CreateLikeService from './CreateLikeService'
 import AppError from '@Shared/Errors/AppError'
+import FakeChatsRepository from '@Modules/Chat/Repositories/Fakes/FakeChatsRepository'
 import FakeUsersRepository from '@Modules/Users/Repositories/Fakes/FakeUsersRepository'
 import Duozada from '../Infra/Typeorm/Entities/Duozada'
 
 let fakeLikesRepository: FakeLikesRepository
 let fakeDuozadasRepository: FakeDuozadasRepository
 let fakeUsersRepository: FakeUsersRepository
+let fakeChatsRepository: FakeChatsRepository
 let createLike: CreateLikeService
 
 describe('> Likes [CREATE]', () => {
@@ -16,9 +18,12 @@ describe('> Likes [CREATE]', () => {
     fakeLikesRepository = new FakeLikesRepository()
     fakeDuozadasRepository = new FakeDuozadasRepository()
     fakeUsersRepository = new FakeUsersRepository()
+    fakeChatsRepository = new FakeChatsRepository()
+
     createLike = new CreateLikeService(
       fakeLikesRepository,
       fakeDuozadasRepository,
+      fakeChatsRepository,
     )
   })
 
