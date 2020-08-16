@@ -6,8 +6,12 @@ import { uuid } from 'uuidv4'
 class FakeMessagesRepository implements IMessagesRepository {
   private messages: Message[] = []
 
-  public async all(): Promise<Message[]> {
-    return this.messages
+  public async all(chat_id: string): Promise<Message[]> {
+    const findMessages = this.messages.filter(
+      message => message.chat_id === chat_id,
+    )
+
+    return findMessages
   }
 
   public async create(messageData: ICreateMessageDTO): Promise<Message> {
