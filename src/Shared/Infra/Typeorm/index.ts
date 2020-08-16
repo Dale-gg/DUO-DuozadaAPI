@@ -1,3 +1,3 @@
-import { createConnections } from 'typeorm'
+import { createConnection } from 'typeorm'
 
-createConnections()
+createConnection()
