@@ -1,4 +1,10 @@
-/node_modules
+node_modules/
 .env
-ormconfig.json
 coverage
+dist
+.idea
+.vscode/
+build/
+temp/
+.docker/
+docker-compose.yaml

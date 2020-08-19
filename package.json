@@ -1,15 +1,23 @@
 {
   "name": "@dalegg/duozada",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/Shared/Infra/Http/server.ts",
+    "start": "node dist/Shared/Infra/Http/server.js",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest"
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/node": "^7.10.5",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.6",
     "@types/express": "^4.17.6",
@@ -22,6 +30,8 @@
     "@types/socket.io": "^2.1.11",
     "@typescript-eslint/eslint-plugin": "^2.28.0",
     "@typescript-eslint/parser": "^2.28.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-config-standard": "^14.1.1",
@@ -35,6 +45,7 @@
     "jest": "^26.0.1",
     "prettier": "^2.0.4",
     "ts-jest": "^26.1.0",
+    "ts-node": "^8.10.2",
     "tsconfig-paths": "^3.9.0"
   },
   "dependencies": {

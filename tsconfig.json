@@ -18,5 +18,5 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["node_modules", "**/*.spec.ts", "coverage", "jest.config.js"]
+  "exclude": ["dist", "node_modules", "**/*.spec.ts", "coverage", "jest.config.js", "ormconfig.js", "babel.config.js"]
 }
