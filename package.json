@@ -1,12 +1,12 @@
 {
   "name": "@dalegg/duozada",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/Shared/Infra/Http/server.ts",
-    "start": "cd dist/Shared/Infra/Http/ && node server.js",
+    "start": "node ./dist/Shared/Infra/Http/server.js",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest"
   },
