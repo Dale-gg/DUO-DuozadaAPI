@@ -23,6 +23,7 @@ usersRouter.post(
       password: Joi.string().required(),
       lanes: Joi.array(),
       champions: Joi.array(),
+      elo: Joi.object(),
     },
   }),
   usersController.store,
