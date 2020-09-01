@@ -7,18 +7,18 @@ import {
   Generated,
 } from 'typeorm'
 
-@Entity('duo_users_lanes')
+@Entity('duo_users_lanes_duo_lanes')
 class UserLane {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
   @Column('uuid')
   @Generated('uuid')
-  user_id: string
+  duoUsersId: string
 
   @Column('uuid')
   @Generated('uuid')
-  lane_id: string
+  duoLanesId: string
 
   @CreateDateColumn()
   created_at: Date
