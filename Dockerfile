@@ -8,5 +8,3 @@ RUN yarn
 ADD . /usr/src/app
 
 RUN yarn build
-
-
