@@ -17,7 +17,15 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
+    "allowSyntheticDefaultImports": true
   },
-  "exclude": ["dist", "node_modules", "**/*.spec.ts", "coverage", "jest.config.js", "ormconfig.js", "babel.config.js"]
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.spec.ts",
+    "coverage",
+    "jest.config.js",
+    "ormconfig.js",
+    "babel.config.js"
+  ]
 }

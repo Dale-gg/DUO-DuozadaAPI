@@ -19,6 +19,7 @@ describe('> Users [CREATE]', () => {
     fakeUsersRepository = new FakeUsersRepository()
     fakeHashProvider = new FakeHashProvider()
     fakeLanesRepository = new FakeLanesRepository()
+    fakeElosRepository = new FakeElosRepository()
     fakeChampionsRepository = new FakeChampionsRepository()
     createUser = new CreateUserService(
       fakeUsersRepository,
