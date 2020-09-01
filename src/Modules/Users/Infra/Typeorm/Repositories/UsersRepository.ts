@@ -18,15 +18,20 @@ class UsersRepository implements IUsersRepository {
     if (user_id) {
       users = await this.ormRepository.find({
         where: { id: Not(user_id) },
+        relations: ['lanes', 'champions', 'elos'],
       })
     } else {
-      users = await this.ormRepository.find()
+      users = await this.ormRepository.find({
+        relations: ['lanes', 'champions', 'elos'],
+      })
     }
 
     return users
   }
 
   public async allWithLikeFilter(user_id: string): Promise<User[]> {
+    let users: User[] = []
+
     const loggedUser = await this.ormRepository.findOne(user_id, {
       relations: ['likes', 'dislikes'],
     })
@@ -35,38 +40,49 @@ class UsersRepository implements IUsersRepository {
       throw new AppError('User not found')
     }
 
-    const users = await this.ormRepository.find({
-      join: {
-        alias: 'users',
-        leftJoin: { likes: 'users.likes', dislikes: 'users.dislikes' },
-      },
-      where: (qb: any) => {
-        qb.where({
-          id: Not(loggedUser.id),
-        }).andWhere('users.id NOT IN (:...targetUsersIds)', {
-          targetUsersIds: [
-            ...loggedUser.likes.map(like => {
-              return like.target_user_id
-            }),
-            ...loggedUser.dislikes.map(dislike => {
-              return dislike.target_user_id
-            }),
-          ],
-        })
-      },
-    })
+    if (loggedUser.likes[0] || loggedUser.dislikes[0]) {
+      users = await this.ormRepository.find({
+        join: {
+          alias: 'users',
+          leftJoin: { likes: 'users.likes', dislikes: 'users.dislikes' },
+        },
+        relations: ['lanes', 'champions', 'elos'],
+        where: (qb: any) => {
+          qb.where({
+            id: Not(loggedUser.id),
+          }).andWhere('users.id NOT IN (:...targetUsersIds)', {
+            targetUsersIds: [
+              ...loggedUser.likes.map(like => {
+                return like.target_user_id
+              }),
+              ...loggedUser.dislikes.map(dislike => {
+                return dislike.target_user_id
+              }),
+            ],
+          })
+        },
+      })
+    } else {
+      users = await this.all(loggedUser.id)
+    }
 
     return users
   }
 
   public async findById(id: string): Promise<User | undefined> {
-    const user = await this.ormRepository.findOne({ where: { id } })
+    const user = await this.ormRepository.findOne({
+      where: { id },
+      relations: ['lanes', 'champions', 'elos'],
+    })
 
     return user
   }
 
   public async findByEmail(email: string): Promise<User | undefined> {
-    const user = await this.ormRepository.findOne({ where: { email } })
+    const user = await this.ormRepository.findOne({
+      where: { email },
+      relations: ['lanes', 'champions', 'elos'],
+    })
 
     return user
   }
