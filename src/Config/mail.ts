@@ -12,8 +12,8 @@ export default {
   driver: process.env.MAIL_DRIVER || 'ethereal',
   defaults: {
     from: {
-      email: 'corbari@agrovence.com.br',
-      name: 'Corbari Agrovence',
+      email: 'contato@dale.gg',
+      name: 'Contato Dale.gg',
     },
   },
 } as IMailConfig

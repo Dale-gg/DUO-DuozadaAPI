@@ -7,7 +7,11 @@ import {
   ManyToOne,
   JoinColumn,
 } from 'typeorm'
+
 import User from './User'
+
+import uploadConfig from '@Config/upload'
+import { Expose } from 'class-transformer'
 
 @Entity('duo_elos')
 class Elo {
@@ -41,6 +45,22 @@ class Elo {
 
   @UpdateDateColumn()
   updated_at: Date
+
+  @Expose({ name: 'image_url' })
+  getImageUrl(): string | null {
+    if (!this.image_url) {
+      return null
+    }
+
+    switch (uploadConfig.driver) {
+      case 'disk':
+        return `${process.env.APP_API_URL}/files/elos/${this.image_url}`
+      case 's3':
+        return `https://${uploadConfig.config.aws.bucket}.s3.amazonaws.com/elos/${this.image_url}`
+      default:
+        return null
+    }
+  }
 }
 
 export default Elo

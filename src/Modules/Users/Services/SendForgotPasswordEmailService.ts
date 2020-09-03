@@ -45,7 +45,7 @@ class SendForgotPasswordEmailService {
         name: user.name,
         email: user.email,
       },
-      subject: '[GoBarber] Recuperação de senha',
+      subject: '[Dale.gg] Recuperação de senha',
       template: {
         file: forgotPasswordTemplate,
         variables: {

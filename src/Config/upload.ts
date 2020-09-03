@@ -43,7 +43,7 @@ export default {
   config: {
     disk: {},
     aws: {
-      bucket: 'app-gobarber-jleon7',
+      bucket: 'dale.gg',
     },
   },
 } as IUploadConfig

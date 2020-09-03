@@ -17,12 +17,6 @@ class UserToken {
   token: string
 
   @Column()
-  type: string
-
-  @Column()
-  is_revoked: boolean
-
-  @Column()
   user_id: string
 
   @CreateDateColumn()

@@ -59,24 +59,26 @@ class CreateUserService {
     })
 
     if (lanes) {
-      await lanes.map(async (prefix: string) => {
-        const lane = await this.lanesRepository.findByPrefix(prefix)
+      const promises: any = []
+      lanes.map((prefix: string) => {
+        return promises.push(this.lanesRepository.findByPrefix(prefix))
+      })
 
-        if (lane) {
-          user.lanes = [lane]
-          await this.usersRepository.save(user)
-        }
+      await Promise.all(promises).then((lanes: any) => {
+        user.lanes = lanes
+        this.usersRepository.save(user)
       })
     }
 
     if (champions) {
-      await champions.map(async (name: string) => {
-        const champion = await this.championsRepository.findByName(name)
+      const promises: any = []
+      champions.map((name: string) => {
+        return promises.push(this.championsRepository.findByName(name))
+      })
 
-        if (champion) {
-          user.champions = [champion]
-          await this.usersRepository.save(user)
-        }
+      await Promise.all(promises).then((champions: any) => {
+        user.champions = champions
+        this.usersRepository.save(user)
       })
     }
 
