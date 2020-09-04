@@ -8,5 +8,5 @@ export default interface ICreateUserDTO {
   password: string
   lanes?: Lane[]
   champions?: Champion[]
-  elo?: Elo
+  elos?: Elo[]
 }
