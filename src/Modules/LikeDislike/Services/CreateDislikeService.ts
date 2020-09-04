@@ -25,6 +25,10 @@ class CreateDislikeService {
       target_user_id,
     )
 
+    if (user_id === target_user_id) {
+      throw new AppError('You can not dislike yourself!')
+    }
+
     if (findByUsersIds) {
       throw new AppError('You already have disliked this user!')
     }
