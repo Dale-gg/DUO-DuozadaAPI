@@ -7,6 +7,7 @@ import IHashProvider from '@Modules/Users/Providers/HashProvider/Models/IHashPro
 import ILanesRepository from '../Repositories/ILanesRepository'
 import IChampionsRepository from '../Repositories/IChampionsRepository'
 import IElosRepository from '../Repositories/IElosRepository'
+import Elo from '../Infra/Typeorm/Entities/Elo'
 
 interface IRequest {
   name: string
@@ -14,7 +15,7 @@ interface IRequest {
   password: string
   lanes?: any
   champions?: any
-  elo?: any
+  elos?: any
 }
 
 @injectable()
@@ -42,7 +43,7 @@ class CreateUserService {
     password,
     lanes,
     champions,
-    elo,
+    elos,
   }: IRequest): Promise<User> {
     const checkUsersExists = await this.usersRepository.findByEmail(email)
 
@@ -82,14 +83,24 @@ class CreateUserService {
       })
     }
 
-    if (elo) {
-      await this.elosRepository.create({
-        tier: elo.tier,
-        rank: elo.rank,
-        season: elo.season,
-        image_url: `${elo.tier}.png`,
-        game_mode: elo.game_mode,
-        user_id: user.id,
+    if (elos) {
+      const promises: any = []
+      elos.map((elo: Elo) => {
+        return promises.push(
+          this.elosRepository.create({
+            tier: elo.tier,
+            rank: elo.rank,
+            season: elo.season,
+            image_url: `${elo.tier}.png`,
+            game_mode: elo.game_mode,
+            user_id: user.id,
+          }),
+        )
+      })
+
+      await Promise.all(promises).then((elos: any) => {
+        user.elos = elos
+        this.usersRepository.save(user)
       })
     }
 
