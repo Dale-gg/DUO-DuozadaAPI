@@ -26,7 +26,5 @@ export const setupWebSocket = (server: any) => {
     })
   })
 
-  console.log(
-    `🔮 [WS] Server is listening on port ${process.env.PORT || 3333} 😱`,
-  )
+  console.log(`🔮 [WS] Server is listening on port ${process.env.PORT} 😱`)
 }

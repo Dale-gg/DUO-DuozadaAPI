@@ -18,6 +18,7 @@ import Chat from '@Modules/Chat/Infra/Typeorm/Entities/Chat'
 import Message from '@Modules/Chat/Infra/Typeorm/Entities/Message'
 import Like from '@Modules/LikeDislike/Infra/Typeorm/Entities/Like'
 import Dislike from '@Modules/LikeDislike/Infra/Typeorm/Entities/Dislike'
+import Elo from './Elo'
 
 @Entity('duo_users')
 class User {
@@ -39,6 +40,9 @@ class User {
 
   @Column()
   status: string
+
+  @OneToMany(() => Elo, elo => elo.user)
+  elos: Elo[]
 
   @OneToMany(() => Chat, chat => chat.user1)
   chats: Chat[]

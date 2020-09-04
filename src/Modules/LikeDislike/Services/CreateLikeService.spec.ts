@@ -47,6 +47,21 @@ describe('> Likes [CREATE]', () => {
     expect(like).toHaveProperty('id')
   })
 
+  it('should not be able to create a new like with same user_id', async () => {
+    const user = await fakeUsersRepository.create({
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '123456',
+    })
+
+    await expect(
+      createLike.execute({
+        user_id: user.id,
+        target_user_id: user.id,
+      }),
+    ).rejects.toBeInstanceOf(AppError)
+  })
+
   it('should not be able to create a new like with the same target user', async () => {
     const user = await fakeUsersRepository.create({
       name: 'John Doe',

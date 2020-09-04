@@ -7,8 +7,8 @@ import {
   Generated,
 } from 'typeorm'
 
-@Entity('duo_users_lanes_duo_lanes')
-class UserLane {
+@Entity('duo_users_champions_gg_champions')
+class UserChampion {
   @PrimaryGeneratedColumn('uuid')
   id: string
 
@@ -18,7 +18,7 @@ class UserLane {
 
   @Column('uuid')
   @Generated('uuid')
-  duoLanesId: string
+  ggChampionsId: string
 
   @CreateDateColumn()
   created_at: Date
@@ -27,4 +27,4 @@ class UserLane {
   updated_at: Date
 }
 
-export default UserLane
+export default UserChampion

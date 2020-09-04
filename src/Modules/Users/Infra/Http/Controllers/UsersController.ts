@@ -19,7 +19,7 @@ export default class UsersController {
   }
 
   public async store(request: Request, response: Response): Promise<Response> {
-    const { name, email, password, lanes, champions } = request.body
+    const { name, email, password, lanes, champions, elos } = request.body
 
     const createUser = container.resolve(CreateUserService)
 
@@ -29,6 +29,7 @@ export default class UsersController {
       password,
       lanes,
       champions,
+      elos,
     })
 
     return response.json(classToClass(user))

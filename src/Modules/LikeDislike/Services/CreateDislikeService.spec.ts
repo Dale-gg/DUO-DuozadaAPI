@@ -35,6 +35,21 @@ describe('> Dislikes [CREATE]', () => {
     expect(dislike).toHaveProperty('id')
   })
 
+  it('should not be able to create a new dislike with same user_id', async () => {
+    const user = await fakeUsersRepository.create({
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '123456',
+    })
+
+    await expect(
+      createDislike.execute({
+        user_id: user.id,
+        target_user_id: user.id,
+      }),
+    ).rejects.toBeInstanceOf(AppError)
+  })
+
   it('should not be able to create a new dislike with the same target user', async () => {
     const user = await fakeUsersRepository.create({
       name: 'John Doe',

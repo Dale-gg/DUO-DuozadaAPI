@@ -48,8 +48,6 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 
 setupWebSocket(server)
 
-server.listen(process.env.PORT || 3333, () => {
-  console.log(
-    `🚀 [HTPP] Server is listening on port ${process.env.PORT || 3333} 🤯`,
-  )
+server.listen(process.env.PORT, () => {
+  console.log(`🚀 [HTPP] Server is listening on port ${process.env.PORT} 🤯`)
 })
