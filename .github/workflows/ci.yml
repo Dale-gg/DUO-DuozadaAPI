@@ -1,6 +1,6 @@
-on: [pull_request]
+name: CI Duozada
 
-name: CI-DUO
+on: [pull_request]
 
 jobs:
   run_tests:
@@ -25,12 +25,16 @@ jobs:
         with:
           node-version: '12.16.1'
           registry-url: 'https://npm.pkg.github.com'
+      
       - name: Configure ENV
         run: cp .env.example .env
+
       - name: Installation
         run: yarn
+
       - name: Lint project
         run: yarn lint:fix
+        
       - name: Run tests
         run: yarn test
         env:
