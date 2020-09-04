@@ -40,6 +40,10 @@ class CreateLikeService {
       target_user_id,
     )
 
+    if (user_id === target_user_id) {
+      throw new AppError('You can not like yourself!')
+    }
+
     if (findByUsersIds) {
       throw new AppError('You already have liked this user!')
     }
