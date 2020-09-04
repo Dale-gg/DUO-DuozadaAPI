@@ -63,15 +63,18 @@ describe('> Users [CREATE]', () => {
       password: '123456',
       lanes: ['TOP', 'MID'],
       champions: ['Zed', 'Yasuo', 'Riven'],
-      elo: {
-        tier: 'Bronze',
-        rank: 'II',
-        season: '11',
-        game_mode: 'Solo/Duo',
-      },
+      elos: [
+        {
+          tier: 'Bronze',
+          rank: 'II',
+          season: '11',
+          game_mode: 'Solo/Duo',
+        },
+      ],
     })
 
     expect(user).toHaveProperty('lanes')
     expect(user).toHaveProperty('champions')
+    expect(user).toHaveProperty('elos')
   })
 })
