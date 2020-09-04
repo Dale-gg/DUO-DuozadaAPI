@@ -6,7 +6,7 @@ class FakeLanesRepository implements ILanesRepository {
   private lanes: Lane[] = []
 
   constructor() {
-    this.lanes.push(
+    const allLanes = [
       {
         id: uuid(),
         name: 'Top Laner',
@@ -92,7 +92,15 @@ class FakeLanesRepository implements ILanesRepository {
         created_at: new Date(),
         updated_at: new Date(),
       },
-    )
+    ]
+
+    allLanes.map(lane => {
+      const laneInstance = new Lane()
+
+      Object.assign(laneInstance, lane)
+
+      this.lanes.push(laneInstance)
+    })
   }
 
   public async findById(id: string): Promise<Lane | undefined> {
