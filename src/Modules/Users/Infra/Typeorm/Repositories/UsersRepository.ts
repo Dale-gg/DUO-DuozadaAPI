@@ -92,6 +92,8 @@ class UsersRepository implements IUsersRepository {
 
     await this.ormRepository.save(user)
 
+    // const userWithRelations = await this.findById(user.id)
+
     return user
   }
 
