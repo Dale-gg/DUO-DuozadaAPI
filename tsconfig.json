@@ -28,6 +28,5 @@
     "jest.config.js",
     "ormconfig.js",
     "babel.config.js"
-  ],
-  "include": ["package.json"]
+  ]
 }
