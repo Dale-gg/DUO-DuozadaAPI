@@ -15,7 +15,10 @@ describe('> ListOneChatService', () => {
     fakeChatsRepository = new FakeChatsRepository()
     fakeMessagesRepository = new FakeMessagesRepository()
 
-    listOneChat = new ListOneChatService(fakeChatsRepository)
+    listOneChat = new ListOneChatService(
+      fakeChatsRepository,
+      fakeUsersRepository,
+    )
   })
 
   it('should be able to list one chat of user with messages', async () => {
@@ -51,15 +54,36 @@ describe('> ListOneChatService', () => {
     chat.messages = [message1, message2]
     await fakeChatsRepository.save(chat)
 
-    const oneChat = await listOneChat.execute({ chat_id: chat.id })
+    const oneChat = await listOneChat.execute({
+      user_id: user1.id,
+      chat_id: chat.id,
+    })
 
     expect(oneChat).toMatchObject(chat)
     expect(oneChat).toHaveProperty('messages')
   })
 
   it('should not be able to list one chat without a valid chat_id', async () => {
+    const user = await fakeUsersRepository.create({
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '123456',
+    })
+
     await expect(
-      listOneChat.execute({ chat_id: 'non-existing-chat-id' }),
+      listOneChat.execute({
+        user_id: user.id,
+        chat_id: 'non-existing-chat-id',
+      }),
+    ).rejects.toBeInstanceOf(AppError)
+  })
+
+  it('should not be able to list one chat without a valid user_id', async () => {
+    await expect(
+      listOneChat.execute({
+        user_id: 'non-existing-user-id',
+        chat_id: 'non-existing-chat-id',
+      }),
     ).rejects.toBeInstanceOf(AppError)
   })
 })

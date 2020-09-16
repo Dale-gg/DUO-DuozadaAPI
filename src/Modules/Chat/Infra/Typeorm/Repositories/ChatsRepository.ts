@@ -19,9 +19,12 @@ class ChatsRepository implements IChatsRepository {
     return chats
   }
 
-  public async findById(id: string): Promise<Chat | undefined> {
+  public async findById(
+    user_id: string,
+    id: string,
+  ): Promise<Chat | undefined> {
     const chat = await this.ormRepository.findOne({
-      where: { id },
+      where: { user1_id: user_id, id },
       relations: ['messages'],
     })
 
