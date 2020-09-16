@@ -19,6 +19,7 @@ import AppError from '@Shared/Errors/AppError'
 import { setupWebSocket } from '../Ws/websocket'
 
 const app = express()
+const prefix = '/duo/v1'
 
 const server = http.createServer(app)
 
@@ -26,7 +27,7 @@ app.use(rateLimiter)
 app.use(cors())
 app.use(express.json())
 app.use('/files', express.static(uploadConfig.uploadsFolder))
-app.use(routes)
+app.use(`${prefix}`, routes)
 
 app.use(errors)
 

@@ -17,7 +17,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
   },
   "exclude": [
     "dist",
@@ -27,5 +28,8 @@
     "jest.config.js",
     "ormconfig.js",
     "babel.config.js"
+  ],
+  "include": [
+    "package.json"
   ]
 }
