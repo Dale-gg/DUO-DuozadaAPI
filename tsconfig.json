@@ -29,7 +29,5 @@
     "ormconfig.js",
     "babel.config.js"
   ],
-  "include": [
-    "package.json"
-  ]
+  "include": ["package.json"]
 }
