@@ -1,5 +1,4 @@
 import { Router } from 'express'
-
 import welcomeRouter from './welcome.route'
 import sessionsRouter from '@Modules/Users/Infra/Http/Routes/sessions.routes'
 import chatsRouter from '@Modules/Chat/Infra/Http/Routes/chats.routes'
