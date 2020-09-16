@@ -18,11 +18,13 @@ export default class ChatsController {
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
+    const user_id = request.user.id
     const { chat_id } = request.params
 
     const listOneService = container.resolve(ListOneChatService)
 
     const chatWithMessages = await listOneService.execute({
+      user_id,
       chat_id,
     })
 
