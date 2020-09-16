@@ -18,6 +18,7 @@ import Chat from '@Modules/Chat/Infra/Typeorm/Entities/Chat'
 import Message from '@Modules/Chat/Infra/Typeorm/Entities/Message'
 import Like from '@Modules/LikeDislike/Infra/Typeorm/Entities/Like'
 import Dislike from '@Modules/LikeDislike/Infra/Typeorm/Entities/Dislike'
+import Highlight from '@Modules/Highlight/Infra/Typeorm/Entities/Highlight'
 import Elo from './Elo'
 
 @Entity('duo_users')
@@ -59,6 +60,9 @@ class User {
   @ManyToMany(() => Lane)
   @JoinTable()
   lanes: Lane[]
+
+  @OneToMany(() => Highlight, highlight => highlight.user)
+  highlights: Highlight[]
 
   @ManyToMany(() => Champion)
   @JoinTable()

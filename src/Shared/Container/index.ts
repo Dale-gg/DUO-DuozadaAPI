@@ -33,6 +33,9 @@ import ChatsRepository from '@Modules/Chat/Infra/Typeorm/Repositories/ChatsRepos
 import IMessagesRepository from '@Modules/Chat/Repositories/IMessagesRepository'
 import MessagesRepository from '@Modules/Chat/Infra/Typeorm/Repositories/MessagesRepository'
 
+import IHighlightsRepository from '@Modules/Highlight/Repositories/IHighlightsRepository'
+import HighlightsRepository from '@Modules/Highlight/Infra/Typeorm/Repositories/HighlightsRepository'
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -78,4 +81,9 @@ container.registerSingleton<IElosRepository>('ElosRepository', ElosRepository)
 container.registerSingleton<IMessagesRepository>(
   'MessagesRepository',
   MessagesRepository,
+)
+
+container.registerSingleton<IHighlightsRepository>(
+  'HighlightsRepository',
+  HighlightsRepository,
 )

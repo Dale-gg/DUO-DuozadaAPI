@@ -36,14 +36,24 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
       status: 'error',
       message: err.message,
     })
+  } else if (err.joi) {
+    return response.status(403).json({
+      status: 'error',
+      message: err.joi.details,
+    })
+  } else if (process.env.NODE_ENV === 'production') {
+    return response.status(500).json({
+      status: 'error',
+      message: 'Internal server error',
+    })
+  } else {
+    console.log(err)
+
+    return response.status(500).json({
+      status: 'error',
+      message: err.message,
+    })
   }
-
-  console.log(err)
-
-  return response.status(500).json({
-    status: 'error',
-    message: 'Internal server error',
-  })
 })
 
 setupWebSocket(server)
