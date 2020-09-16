@@ -12,8 +12,13 @@ class FakeChatsRepository implements IChatsRepository {
     return findChat
   }
 
-  public async findById(id: string): Promise<Chat | undefined> {
-    const findChat = this.chats.find(chat => chat.id === id)
+  public async findById(
+    user_id: string,
+    id: string,
+  ): Promise<Chat | undefined> {
+    const findChat = this.chats.find(
+      chat => chat.id === id && chat.user1_id === user_id,
+    )
 
     return findChat
   }
