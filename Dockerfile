@@ -1,10 +1,14 @@
 FROM node:12-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /node-app
 COPY package.json .
 
 RUN yarn
 
-ADD . /usr/src/app
+ADD . /node-app
 
 RUN yarn build
+
+EXPOSE ${PORT}
+
+ENTRYPOINT ["yarn", "start"]
