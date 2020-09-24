@@ -6,6 +6,10 @@ import { uuid } from 'uuidv4'
 class FakeElosRepository implements IElosRepository {
   private elos: Elo[] = []
 
+  public async allByUserId(user_id: string): Promise<Elo[]> {
+    return this.elos.filter(eloObj => eloObj.user_id === user_id)
+  }
+
   public async create(eloData: ICreateEloDTO): Promise<Elo> {
     const elo = new Elo()
 

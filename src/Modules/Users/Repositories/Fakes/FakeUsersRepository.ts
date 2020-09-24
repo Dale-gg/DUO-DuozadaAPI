@@ -87,7 +87,7 @@ class FakeUsersRepository implements IUsersRepository {
   public async create(userData: ICreateUserDTO): Promise<User> {
     const user = new User()
 
-    Object.assign(user, { id: uuid() }, userData)
+    Object.assign(user, { id: uuid(), status: true }, userData)
 
     this.users.push(user)
 

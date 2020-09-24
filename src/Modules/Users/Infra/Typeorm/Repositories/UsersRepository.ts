@@ -12,18 +12,32 @@ class UsersRepository implements IUsersRepository {
     this.ormRepository = getRepository(User)
   }
 
-  public async all(user_id?: string): Promise<User[]> {
+  public async all(user_id?: string, withDeleted? = false): Promise<User[]> {
     let users: User[]
 
-    if (user_id) {
-      users = await this.ormRepository.find({
-        where: { id: Not(user_id) },
-        relations: ['lanes', 'champions', 'elos'],
-      })
+    if (withDeleted) {
+      if (user_id) {
+        users = await this.ormRepository.find({
+          where: { id: Not(user_id) },
+          relations: ['lanes', 'champions', 'elos'],
+        })
+      } else {
+        users = await this.ormRepository.find({
+          relations: ['lanes', 'champions', 'elos'],
+        })
+      }
     } else {
-      users = await this.ormRepository.find({
-        relations: ['lanes', 'champions', 'elos'],
-      })
+      if (user_id) {
+        users = await this.ormRepository.find({
+          where: { id: Not(user_id), status: true },
+          relations: ['lanes', 'champions', 'elos'],
+        })
+      } else {
+        users = await this.ormRepository.find({
+          where: { status: true },
+          relations: ['lanes', 'champions', 'elos'],
+        })
+      }
     }
 
     return users
@@ -50,6 +64,7 @@ class UsersRepository implements IUsersRepository {
         where: (qb: any) => {
           qb.where({
             id: Not(loggedUser.id),
+            status: true,
           }).andWhere('users.id NOT IN (:...targetUsersIds)', {
             targetUsersIds: [
               ...loggedUser.likes.map(like => {

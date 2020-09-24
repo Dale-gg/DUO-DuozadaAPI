@@ -23,5 +23,17 @@ profileRouter.put(
   }),
   profileController.update,
 )
+profileRouter.put(
+  '/relations',
+  celebrate({
+    [Segments.BODY]: {
+      lanes: Joi.array(),
+      champions: Joi.array(),
+      elos: Joi.array(),
+    },
+  }),
+  profileController.updateRelations,
+)
+profileRouter.delete('/', profileController.delete)
 
 export default profileRouter

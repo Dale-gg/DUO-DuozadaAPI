@@ -1,6 +1,5 @@
 import User from '@Modules/Users/Infra/Typeorm/Entities/User'
 import { injectable, inject } from 'tsyringe'
-// import AppError from '@Shared/Errors/AppError'
 import IHashProvider from '../Providers/HashProvider/Models/IHashProvider'
 import IUsersRepository from '@Modules/Users/Repositories/IUsersRepository'
 import AppError from '@Shared/Errors/AppError'

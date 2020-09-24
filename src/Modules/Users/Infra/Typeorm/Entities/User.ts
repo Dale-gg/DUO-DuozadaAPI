@@ -40,7 +40,7 @@ class User {
   avatar: string
 
   @Column()
-  status: string
+  status: boolean
 
   @OneToMany(() => Elo, elo => elo.user)
   elos: Elo[]

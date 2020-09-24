@@ -11,6 +11,14 @@ class ElosRepository implements IElosRepository {
     this.ormRepository = getRepository(Elo)
   }
 
+  public async allByUserId(user_id): Promise<Elo[]> {
+    const elos = await this.ormRepository.find({
+      where: { user_id },
+    })
+
+    return elos
+  }
+
   public async create(eloData: ICreateEloDTO): Promise<Elo> {
     const elo = this.ormRepository.create(eloData)
 
