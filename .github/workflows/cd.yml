@@ -9,8 +9,7 @@ env:
   PREFIX: duozada
   REGISTRY_REPO: jlenon7/duozada
   DEPLOY_CONF: deployment/duozada
-  K8S_CLUSTER: duogg-cluster
-      
+  K8S_CLUSTER: duogg-cluster     
 
 jobs:
   build:
