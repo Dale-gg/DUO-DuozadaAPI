@@ -9,4 +9,5 @@ export default interface ICreateUserDTO {
   lanes?: Lane[]
   champions?: Champion[]
   elos?: Elo[]
+  status?: boolean
 }
