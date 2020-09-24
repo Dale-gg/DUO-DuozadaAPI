@@ -31,14 +31,14 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
   
-      - name: Save AWS Kubeconfig
-        run: aws eks --region us-east-1 update-kubeconfig --name $K8S_CLUSTER
-  
-      - name: Export KUBECONFIG
-        run: export KUBECONFIG=~/.kube/config
-  
-      - name: Deploy to AWS Kubernetes
-        run: kubectl set image $DEPLOY_CONF $PREFIX=$REGISTRY_REPO
-  
-      - name: Verify deployment
-        run: kubectl rollout status $DEPLOY_CONF
+    - name: Save AWS Kubeconfig
+      run: aws eks --region us-east-1 update-kubeconfig --name $K8S_CLUSTER
+
+    - name: Export KUBECONFIG
+      run: export KUBECONFIG=~/.kube/config
+
+    - name: Deploy to AWS Kubernetes
+      run: kubectl set image $DEPLOY_CONF $PREFIX=$REGISTRY_REPO
+
+    - name: Verify deployment
+      run: kubectl rollout status $DEPLOY_CONF
