@@ -12,6 +12,12 @@ const upload = multer(uploadConfig.multer)
 
 highlightsRouter.get('/', ensureAuthenticated, highlightsController.index)
 highlightsRouter.get('/:id', ensureAuthenticated, highlightsController.show)
+highlightsRouter.put(
+  '/:id',
+  ensureAuthenticated,
+  upload.single('media'),
+  highlightsController.update,
+)
 highlightsRouter.post(
   '/',
   ensureAuthenticated,
