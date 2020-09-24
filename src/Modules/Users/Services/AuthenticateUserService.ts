@@ -33,6 +33,13 @@ class AuthenticateUserService {
       throw new AppError('Incorrect email/password combination', 401)
     }
 
+    if (user.status === false) {
+      throw new AppError(
+        'This profile has been disabled from our services',
+        401,
+      )
+    }
+
     const passwordMatched = await this.hashProvider.compareHash(
       password,
       user.password,

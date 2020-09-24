@@ -56,4 +56,20 @@ describe('> Authenticate [CREATE]', () => {
       }),
     ).rejects.toBeInstanceOf(AppError)
   })
+
+  it('should not be able to authenticate with a disabled account', async () => {
+    await fakeUsersRepository.create({
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '123456',
+      status: false,
+    })
+
+    await expect(
+      authenticateUser.execute({
+        email: 'johndoe@example.com',
+        password: '123456',
+      }),
+    ).rejects.toBeInstanceOf(AppError)
+  })
 })
